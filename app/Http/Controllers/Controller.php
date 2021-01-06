@@ -28,7 +28,7 @@ class Controller extends BaseController
                 unset($routes[$index]);
             }
         }
-        return '<pre>'.implode("\n", $routes).'</pre>';
+        return '<pre>' . implode("\n", $routes) . '</pre>';
     }
 
     /**

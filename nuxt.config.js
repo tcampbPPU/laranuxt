@@ -1,3 +1,4 @@
+require('dotenv').config()
 
 export default {
   /*
@@ -5,6 +6,14 @@ export default {
   ** See https://nuxtjs.org/api/configuration-srcdir/
   */
   srcDir: 'client/',
+
+  /**
+   * Injected Environment Variables
+   */
+  env: {
+    domain: process.env.npm_package_version || '1.0.0',
+  },
+
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
@@ -49,6 +58,10 @@ export default {
     '@nuxtjs/eslint-module',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
+    // Doc: https://github.com/nuxt-community/router-module
+    '@nuxtjs/router',
+    // Doc: https://github.com/nuxt-community/laravel-echo
+    '@nuxtjs/laravel-echo',
   ],
   /*
   ** Nuxt.js modules
