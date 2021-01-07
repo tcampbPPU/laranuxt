@@ -6,14 +6,14 @@ import Index from '~/pages/index'
 
 Vue.use(Router)
 
-export function createRouter() {
+export function createRouter () {
   return new Router({
     mode: 'history',
     routes: [
       {
         path: '/',
-        component: Index
-      }
-    ]
+        component: Index,
+      },
+    ],
   })
 }
