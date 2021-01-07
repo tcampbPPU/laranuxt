@@ -24,6 +24,7 @@ Route::group([
     'prefix' => 'api/auth',
 ], function ($router) {
     Route::post('login', [AuthController::class, 'login'])->withoutMiddleware(['auth:sanctum']);
+    Route::post('register', [AuthController::class, 'register'])->withoutMiddleware(['auth:sanctum']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::get('user', [AuthController::class, 'me']);

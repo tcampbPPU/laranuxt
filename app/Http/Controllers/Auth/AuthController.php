@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -17,7 +18,7 @@ class AuthController extends Controller
     public function __construct(Request $request)
     {
         parent::__construct($request);
-        $this->middleware('auth:sanctum', ['except' => ['login']]);
+        $this->middleware('auth:sanctum', ['except' => ['login', 'register']]);
     }
 
     /**
@@ -35,6 +36,28 @@ class AuthController extends Controller
         }
 
         $sanctumToken = request()->user()->createToken($tokenName);
+
+        return $this->respondWithToken($sanctumToken->plainTextToken, 201);
+    }
+
+    /**
+     * Authenticate Login attempt, preceded by resending token.
+     *
+     * @return JsonResponse
+     */
+    public function register()
+    {
+        $this
+            ->option('name', 'required|string')
+            ->option('email', 'required|email|unique:users')
+            ->option('password', 'required|string')
+            ->verify();
+
+        $tokenName = request('device_name') ?? '';
+
+        $user = User::create(request()->all());
+
+        $sanctumToken = $user->createToken($tokenName);
 
         return $this->respondWithToken($sanctumToken->plainTextToken, 201);
     }
