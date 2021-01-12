@@ -71,6 +71,8 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://github.com/acidjazz/nuxt-tailvue
     [ 'nuxt-tailvue', { all: true } ],
+    // Doc: https://auth.nuxtjs.org/
+    '@nuxtjs/auth-next',
   ],
   /*
   ** Axios module configuration
@@ -82,7 +84,38 @@ export default {
     headers: {
       accept: 'application/json',
     },
+    redirect: {
+      login: '/auth/login',
+      logout: '/auth/login',
+      home: '/',
+    },
   },
+
+  /*
+  ** Nuxt Auth
+  ** See https://auth.nuxtjs.org/providers/laravel-sanctum/
+  */
+  auth: {
+    strategies: {
+      'laravelSanctum': {
+        provider: 'laravel/sanctum',
+        url: process.env.API_URL,
+        endpoints: {
+          login: { url: '/api/auth/login', method: 'post', propertyName: false },
+          user: { url: '/api/auth/user', method: 'get', propertyName: false }
+        },
+      }
+    }
+  },
+
+  /**
+   * Router Middleware
+   * See https://fr.nuxtjs.org/examples/middleware-router/
+   */
+  router: {
+    middleware: ['auth']
+  },
+
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 // Import Routes
 import Index from '~/pages/index'
+import Login from '~/pages/auth/login'
 
 Vue.use(Router)
 
@@ -13,6 +14,10 @@ export function createRouter () {
       {
         path: '/',
         component: Index,
+      },
+      {
+        path: '/auth/login',
+        component: Login,
       },
     ],
   })
