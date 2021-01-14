@@ -23,7 +23,7 @@ class Controller extends BaseController
     {
         Artisan::call('route:list');
         $routes = explode("\n", Artisan::output());
-        foreach ($routes as $index=>$route) {
+        foreach ($routes as $index => $route) {
             if (strpos($route, 'debugbar') !== false) {
                 unset($routes[$index]);
             }
@@ -44,7 +44,6 @@ class Controller extends BaseController
             ->verify();
 
         $faker = Factory::create();
-        $users = [];
 
         for ($i = 0; $i !== (int) $request->get('count'); $i++) {
             $email = $faker->unique()->safeEmail;
@@ -53,7 +52,7 @@ class Controller extends BaseController
                 'job' => $faker->jobTitle,
                 'email' => $email,
                 'phone' => $faker->phoneNumber(),
-                'avatar' => 'https://avatars.dicebear.com/api/human/'.$email.'.svg',
+                'avatar' => 'https://avatars.dicebear.com/api/human/' . $email . '.svg',
             ];
         }
 

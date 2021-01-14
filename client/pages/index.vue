@@ -11,7 +11,7 @@
     </ul>
     <div class="text-center mt-4">
       <span>provided by endpoint</span><span>&nbsp;</span>
-      <a class="text-blue-400" :href="`${$config.apiUrl}/example?count=9`">/example</a>
+      <a class="text-blue-400" :href="`${$config.apiUrl}/api/example?count=9`">/api/example</a>
       <span>&nbsp;</span>
       <span class="text-gray-400 text-sm">(2 second delay)</span>
     </div>
@@ -49,7 +49,7 @@ export default {
   methods: {
     async get (count) {
       await this.$sleep(2000)
-      this.users = (await this.$axios.get('example', { params: { count } })).data.data
+      this.users = (await this.$axios.get('api/example', { params: { count } })).data.data
     },
     total (count) {
       this.users = []

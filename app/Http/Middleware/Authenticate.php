@@ -14,8 +14,10 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
-            return route('login');
-        }
+        abort(response()->json([
+            'success' => false,
+            'error' => 'Unauthenticated Request',
+            'msg' => 'Your request is missing the authentication bearer token',
+        ], 403));
     }
 }

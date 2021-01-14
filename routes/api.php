@@ -16,14 +16,13 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', [Controller::class, 'routes'])->name('route information');
-Route::get('/example', [Controller::class, 'example'])->name('example route');
 Route::get('/error', [Controller::class, 'error'])->name('error route');
 
 Route::group([
     'middleware' => ['auth:sanctum'],
     'prefix' => 'api/auth',
 ], function ($router) {
-    Route::post('login', [AuthController::class, 'login'])->withoutMiddleware(['auth:sanctum']);
+    Route::post('login', [AuthController::class, 'login'])->withoutMiddleware(['auth:sanctum'])->name('login');
     Route::post('register', [AuthController::class, 'register'])->withoutMiddleware(['auth:sanctum']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
@@ -31,9 +30,9 @@ Route::group([
 });
 
 Route::group([
-    'middleware' => ['api', 'auth:sanctum'],
+    'middleware' => ['auth:sanctum'],
     'prefix' => 'api',
 ], function ($router) {
     // Define Additional Routes
-    // ... 
+    Route::get('/example', [Controller::class, 'example'])->name('example route');
 });

@@ -19,7 +19,8 @@
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
     "nuxt-tailvue": "^1.0.10",
-    "socket.io-client": "^3.0.5"
+    "socket.io-client": "^3.0.5",
+    "vue-clickaway": "^2.2.2"
   },
   "devDependencies": {
     "@nuxtjs/dotenv": "^1.4.1",
