@@ -113,3 +113,4 @@ sw.*
 .vapor/
 .env.production
 .env.staging
+.php_cs.cache

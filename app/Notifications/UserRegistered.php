@@ -40,6 +40,7 @@ class UserRegistered extends Notification
     public function toMail($notifiable)
     {
         $url = env('WEB_URL') . '/verify-email';
+
         return (new MailMessage)
             ->subject('Account has been registered')
             ->greeting('Welcome!')

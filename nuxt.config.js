@@ -97,15 +97,15 @@ export default {
   */
   auth: {
     strategies: {
-      'laravelSanctum': {
+      laravelSanctum: {
         provider: 'laravel/sanctum',
         url: process.env.API_URL,
         endpoints: {
           login: { url: '/api/auth/login', method: 'post', propertyName: false },
-          user: { url: '/api/auth/user', method: 'get', propertyName: false }
+          user: { url: '/api/auth/user', method: 'get', propertyName: false },
         },
-      }
-    }
+      },
+    },
   },
 
   /**
@@ -113,7 +113,7 @@ export default {
    * See https://fr.nuxtjs.org/examples/middleware-router/
    */
   router: {
-    middleware: ['auth']
+    middleware: [ 'auth' ],
   },
 
   /*

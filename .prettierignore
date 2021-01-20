@@ -1,0 +1,7 @@
+public/
+vendor/
+node_modules/
+.github/
+.vscode/
+.nuxt/
+client/static/

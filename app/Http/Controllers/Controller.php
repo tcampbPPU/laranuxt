@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Artisan;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, MetApi;
+
     /**
      * Display our routes
      *
@@ -28,6 +29,7 @@ class Controller extends BaseController
                 unset($routes[$index]);
             }
         }
+
         return '<pre>' . implode("\n", $routes) . '</pre>';
     }
 
