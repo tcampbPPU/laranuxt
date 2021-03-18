@@ -63,6 +63,11 @@ export default {
     // Doc: https://github.com/nuxt-community/laravel-echo
     '@nuxtjs/laravel-echo',
   ],
+
+  tailwindcss: {
+    jit: true,
+  },
+  
   /*
   ** Nuxt.js modules
   */
