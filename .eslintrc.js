@@ -21,5 +21,6 @@ module.exports = {
     camelcase: 'off',
     'array-bracket-spacing': [ 'error', 'always' ],
     'vue-html-closing-bracket-newline': 0,
+    'vue/comment-directive': 'off'
   },
 }
